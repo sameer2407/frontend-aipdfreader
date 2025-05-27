@@ -35,12 +35,14 @@ export function ChatInterface() {
 
   return (
     <div className="flex flex-col h-full w-full">
-      <div className="flex-1 overflow-y-auto m-2 px-4 py-2 space-y-4 bg-background">
+      <div className="flex-1 overflow-y-auto m-2 px-2 md:px-4 py-2 space-y-4 bg-background">
         {messages.length === 0 ? (
-          <div className="h-full flex flex-col items-center justify-center text-muted-foreground space-y-6">
+          <div className="h-full flex flex-col items-center justify-center text-muted-foreground space-y-4 md:space-y-6">
             <div className="text-center space-y-2">
-              <p className="text-3xl font-semibold">Welcome to AI PDF Reader</p>
-              <p className="text-lg text-muted-foreground/80">
+              <p className="text-2xl md:text-3xl font-semibold">
+                Welcome to AI PDF Reader
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground/80">
                 Upload a PDF to start chatting with your document
               </p>
             </div>
@@ -54,19 +56,19 @@ export function ChatInterface() {
             <div
               key={index}
               className={cn(
-                "flex items-start gap-3 p-4 rounded-lg",
+                "flex items-start gap-2 md:gap-3 p-3 md:p-4 rounded-lg m-4",
                 message.role === "assistant" ? "bg-muted/50" : "bg-primary/5"
               )}
             >
-              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-primary/10">
+              <div className="w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center bg-primary/10">
                 {message.role === "assistant" ? (
-                  <Bot className="w-4 h-4" />
+                  <Bot className="w-3 h-3 md:w-4 md:h-4" />
                 ) : (
-                  <User className="w-4 h-4" />
+                  <User className="w-3 h-3 md:w-4 md:h-4" />
                 )}
               </div>
               <div className="flex-1">
-                <p className="text-sm">{message.content}</p>
+                <p className="text-sm md:text-base">{message.content}</p>
               </div>
             </div>
           ))
@@ -77,16 +79,16 @@ export function ChatInterface() {
       {/* Input */}
       <form
         onSubmit={handleSubmit}
-        className="shrink-0 border-t px-4 py-2 bg-background"
+        className="shrink-0 border-t px-2 md:px-4 py-2 bg-background"
       >
         <div className="flex gap-2">
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask me anything about the pdf..."
-            className="flex-1 h-16 py-3 outline-none"
+            className="flex-1 h-12 md:h-16 py-2 md:py-3 outline-none text-sm md:text-base"
           />
-          <Button type="submit" size="icon" className="h-16">
+          <Button type="submit" size="icon" className="h-12 md:h-16">
             <Send className="h-4 w-4" />
           </Button>
         </div>

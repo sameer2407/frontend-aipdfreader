@@ -15,8 +15,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body className="flex h-screen overflow-hidden">
         <SidebarProvider>
           <AppSidebar />
-          <main className="flex-1 overflow-y-auto relative group">
-            <div className="absolute z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <main className="flex-1 overflow-y-auto relative">
+            <div className="fixed top-4 left-4 z-50 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200">
               <SidebarTrigger />
             </div>
             {children}
