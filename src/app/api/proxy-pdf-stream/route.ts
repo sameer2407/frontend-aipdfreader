@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
+import dotenv from 'dotenv';
+dotenv.config();
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 export async function POST(request: Request) {
   console.log('=== API Route Hit ===');
@@ -30,7 +32,7 @@ export async function POST(request: Request) {
 
     // Send request to upstream API
     console.log('Sending request to main server...');
-    const response = await fetch("https://pdf-gateway-service.onrender.com/api/pdf/query", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_PDF_GATEWAY_URL}/api/pdf/query`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
