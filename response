@@ -1,0 +1,9 @@
+event: connected
+data: {"status": "connected"}
+
+event: chunk
+data: {"chunk":"This document appears to be a collection of excerpts from Franz Kafka's novel \"The Metamorphosis\", translated by David Wyllie. The excerpts are not continuous, but rather seem to be a selection of passages from the novel. The first passage describes Gregor Samsa, a traveling salesman, lying in his bed and looking at a picture on the wall of a lady wearing a fur hat and boa. He then turns to look out the window at the dull weather and feels sad. The second passage is not part of the novel, but rather appears to be a commentary on sentence structure and emphasis. It discusses how the placement of words in a sentence can affect the emphasis and meaning of the sentence. The third passage returns to the novel and describes Gregor's frustration and upset at the arrival of the chief clerk, who has come to investigate something. Gregor is annoyed that the chief clerk has to come himself and that the whole family is being treated as suspicious. In his upset, Gregor swings himself out of bed, but falls and hits his head on the floor. The chief clerk hears the noise and comments that something has fallen down in the room. Overall, this document provides a glimpse into the themes of alienation, frustration, and the absurdity of modern life that are characteristic of Kafka's work. However, it is not a complete or continuous summary of the novel, but rather a selection of passages that may be intended to illustrate certain points or themes. ","success":true,"error_message":""}
+
+event: complete
+data: {"status": "complete"}
+
