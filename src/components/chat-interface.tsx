@@ -17,9 +17,15 @@ export function ChatInterface() {
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesEndRef.current) {
+      const container = messagesContainerRef.current;
+      if (container) {
+        container.scrollTop = container.scrollHeight;
+      }
+    }
   }, [messages]);
 
   // Handle input blur to ensure proper mobile behavior
@@ -91,8 +97,11 @@ export function ChatInterface() {
   };
 
   return (
-    <div className="flex flex-col h-full w-full max-h-[100dvh]">
-      <div className="flex-1 overflow-y-auto px-2 py-2 space-y-2 bg-background">
+    <div className="flex flex-col h-full w-full max-h-[100dvh] overflow-hidden">
+      <div
+        ref={messagesContainerRef}
+        className="flex-1 overflow-y-auto px-2 py-2 space-y-2 bg-background"
+      >
         {messages.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center text-muted-foreground space-y-4">
             <div className="text-center space-y-2 px-4">
@@ -145,9 +154,10 @@ export function ChatInterface() {
             onChange={(e) => setInput(e.target.value)}
             onBlur={handleInputBlur}
             placeholder="Ask me anything about the pdf..."
-            className="flex-1 h-10 text-sm outline-none"
+            className="flex-1 h-10 outline-none text-base"
             disabled={loading}
             autoFocus
+            style={{ fontSize: "16px" }}
           />
           <Button
             type="submit"
