@@ -1,10 +1,10 @@
 "use client";
-
 import { useState, useRef, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { Send, Bot, User, Upload, Loader2 } from "lucide-react";
+import { Send, Bot, User, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import UploadPDFButton from "./UploadPDFButton";
 
 interface Message {
   role: "user" | "assistant";
@@ -110,10 +110,7 @@ export function ChatInterface() {
                 Upload a PDF to start chatting with your document
               </p>
             </div>
-            <Button size="lg" className="gap-2">
-              <Upload className="h-4 w-4" />
-              Upload PDF
-            </Button>
+            <UploadPDFButton />
           </div>
         ) : (
           messages.map((message, index) => (
