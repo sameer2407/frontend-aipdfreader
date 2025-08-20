@@ -5,6 +5,7 @@ import { Input } from "./ui/input";
 import { Send, Bot, User, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import UploadPDFButton from "./UploadPDFButton";
+import { MessageSkeleton } from "./MessageSkeleton";
 
 interface Message {
   role: "user" | "assistant";
@@ -129,9 +130,13 @@ export function ChatInterface() {
                 )}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm whitespace-pre-wrap break-words">
-                  {message.content}
-                </p>
+                {message.role === "assistant" && !message.content && loading ? (
+                  <MessageSkeleton />
+                ) : (
+                  <p className="text-sm whitespace-pre-wrap break-words">
+                    {message.content}
+                  </p>
+                )}
               </div>
             </div>
           ))

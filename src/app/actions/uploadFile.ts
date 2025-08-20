@@ -1,5 +1,4 @@
 "use server";
-import { supabase } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
 
 export async function uploadFile(formData: FormData) {
@@ -15,32 +14,9 @@ export async function uploadFile(formData: FormData) {
   }
 
   try {
-    // Convert File to ArrayBuffer
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = new Uint8Array(arrayBuffer);
-
     // Generate unique filename
     const timestamp = Date.now();
     const fileName = `${timestamp}-${file.name}`;
-
-    // Upload to Supabase Storage
-    const { data, error } = await supabase.storage
-      .from('pdfs') // Your bucket name
-      .upload(fileName, buffer, {
-        contentType: 'application/pdf',
-        cacheControl: '3600',
-        upsert: false
-      });
-
-    if (error) {
-      console.error('Error uploading file:', error);
-      throw new Error('Failed to upload file');
-    }
-
-    // Get public URL
-    const { data: { publicUrl } } = supabase.storage
-      .from('pdfs')
-      .getPublicUrl(fileName);
 
     // Process the PDF with the RAG service
     try {
@@ -76,7 +52,6 @@ export async function uploadFile(formData: FormData) {
     revalidatePath("/");
     return {
       success: true,
-      url: publicUrl,
       fileName: fileName
     };
   } catch (error) {

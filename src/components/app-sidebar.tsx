@@ -1,9 +1,11 @@
 import {
   BookOpen,
   Home,
-  MessageSquare,
   Upload,
-  BrainCircuit,
+  Github,
+  Linkedin,
+  Twitter,
+  User,
 } from "lucide-react";
 import {
   Sidebar,
@@ -14,6 +16,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarSeparator,
 } from "@/components/ui/sidebar";
 
 // Menu items.
@@ -23,22 +26,34 @@ const items = [
     url: "/",
     icon: Home,
   },
-
-  {
-    title: "Chat History",
-    url: "/chat-history",
-    icon: MessageSquare,
-  },
   {
     title: "Upload",
     url: "/upload",
     icon: Upload,
   },
-
   {
-    title: "Models",
-    url: "#",
-    icon: BrainCircuit,
+    title: "About Me",
+    url: "/about",
+    icon: User,
+  },
+];
+
+// Social media links
+const socialLinks = [
+  {
+    title: "GitHub",
+    url: "https://github.com/sameer2407",
+    icon: Github,
+  },
+  {
+    title: "LinkedIn",
+    url: "https://www.linkedin.com/in/sameer-jadaun-13379a241/",
+    icon: Linkedin,
+  },
+  {
+    title: "Twitter",
+    url: "https://x.com/Sameer_2407",
+    icon: Twitter,
   },
 ];
 
